@@ -4,9 +4,8 @@ if [ "$(id -u)"] != "0" ]; then
   exit 1
 fi
 
-if [""]
 apt-get update
-apt-get install kodi vim curl nc lighthttpd dnsmasq
+apt-get install kodi vim curl dnsmasq
 curl -sSL https://install.pi-hole.net | bash
 # TODO: Check if installing pavucontrol breaks setup.
 
