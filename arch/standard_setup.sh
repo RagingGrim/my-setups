@@ -8,7 +8,7 @@ yaourt -S spotify oh-my-zsh-git
 echo "Creating system links to configs!"
 
 # link zsh
-ln -sf configs/.zshrc ~/.zshrc
+ln -f configs/zshrc ~/.zshrc
 
 
 
