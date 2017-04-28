@@ -33,6 +33,12 @@ NeoBundle 'Valloric/YouCompleteMe', {
 NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ryanoasis/vim-devicons'
+NeoBundle 'junegunn/fzf'
+NeoBundle 'neomake/neomake'
 
 call neobundle#end()  
 filetype plugin indent on
@@ -47,9 +53,9 @@ set number
 
 let g:deoplete#enable_at_startup = 1
 let g:clang_library_path='/usr/lib64/libclang.so.4'
+let g:airline_theme='base16'
+set foldmethod=indent
 
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 
 " Custom Keybindings----
 nnoremap <F4> :NERDTreeToggle<CR> 

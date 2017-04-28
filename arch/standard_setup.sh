@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pacman -Syyu
-pacman -S python cmake python3 rust golang vim nvim clang atom chromium octave zsh nc nmap termite
+pacman -S python cmake python3 rust golang vim neovim clang atom chromium octave zsh nc nmap termite
 yaourt -S spotify oh-my-zsh-git
 pip install neovim
 

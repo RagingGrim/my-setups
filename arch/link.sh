@@ -10,4 +10,4 @@ ln -f configs/termite_config ~/.config/termite/config
 # twilight base 16: curl https://raw.githubusercontent.com/khamer/base16-termite/master/themes/base16-twilight.config >> ~/.config/termite/config
 
 mkdir -p ~/.config/nvim
-ln -f configs/init.vim ~/config/nvim/init.vim
+ln -f configs/init.vim ~/.config/nvim/init.vim
