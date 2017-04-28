@@ -3,7 +3,6 @@
 ln -f configs/zshrc ~/.zshrc
 
 
-
 # link termite
 mkdir -p ~/.config/termite
 ln -f configs/termite_config ~/.config/termite/config
