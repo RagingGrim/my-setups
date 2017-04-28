@@ -39,6 +39,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'junegunn/fzf'
 NeoBundle 'neomake/neomake'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'artur-shaik/vim-javacomplete2'
 
 call neobundle#end()  
 filetype plugin indent on
@@ -60,7 +62,31 @@ set foldmethod=indent
 " Custom Keybindings----
 nnoremap <F4> :NERDTreeToggle<CR> 
 
-
 " Colors----
 let base16colorspace=256
 colorscheme base16-tomorrow
+
+" Custom Functions
+"" Toggle fold state between closed and opened.
+"" If there is no fold at current line, just moves forward.
+"" If it is present, reverse it's state.
+fun! ToggleFold()
+    if foldlevel('.') == 0
+        normal! l
+    else
+        if foldclosed('.') < 0
+            . foldclose
+        else
+            . foldopen
+        endif
+    endif
+    " Clear status line
+    echo
+endfun
+
+" Map this function to Space key.
+noremap <space> :call ToggleFold()<CR>
+
+
+" autocmd
+autocmd! BufWritePost * Neomake
