@@ -57,7 +57,6 @@ let g:deoplete#enable_at_startup = 1
 let g:clang_library_path='/usr/lib64/libclang.so.4'
 let g:airline_theme='base16'
 set foldmethod=indent
-let g:ycm_server_python_interpreter = 'python2'
 
 " Custom Keybindings----
 nnoremap <F4> :NERDTreeToggle<CR> 
