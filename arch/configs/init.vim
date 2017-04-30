@@ -22,14 +22,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " ------------------------------------
 
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Valloric/YouCompleteMe', {  
-     \ 'build'      : {
-        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-        \ }
-     \ }
+"NeoBundle 'Valloric/YouCompleteMe', {  
+"     \ 'build'      : {
+"        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+"        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+"\ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+"        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+"        \ }
+"     \ }
 NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'chriskempson/base16-vim'
@@ -52,10 +52,13 @@ NeoBundleCheck
 
 " Custom Settings-----
 set number
+set relativenumber
 
 let g:deoplete#enable_at_startup = 1
 let g:clang_library_path='/usr/lib64/libclang.so.4'
 let g:airline_theme='base16'
+let g:colorcolumn=80
+
 set foldmethod=indent
 
 " Custom Keybindings----
@@ -83,9 +86,13 @@ fun! ToggleFold()
     echo
 endfun
 
-" Map this function to Space key.
-noremap <space> :call ToggleFold()<CR>
 
+
+" Map this function to Space key.
+noremap f :call ToggleFold()<CR>
+
+" Styling
+match ErrorMsg '\%>80v.\+'
 
 " autocmd
 autocmd! BufWritePost * Neomake
