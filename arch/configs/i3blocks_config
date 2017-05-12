@@ -30,10 +30,21 @@ command=$SCRIPT_DIR/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-# Date Time
-#
+
+
+[spotify]
+color=#cf6a4c
+command=~/Github/my-setups/arch/scripts/spotify.sh
+interval=5
+
+[watch_custom]
+command=~/Github/my-setups/arch/scripts/watch.sh
+interval=5
+color=#7587a6
 
 [time]
 command=~/Github/my-setups/arch/scripts/time.sh
-interval=5
-color=#A39A90
+interval=1
+color=#9b859d
+
+
