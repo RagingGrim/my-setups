@@ -17,6 +17,6 @@ cpu_total_cur=$((user+system+nice+softirq+steal+idle+iowait))
 
 # compute CPU utilization (%)
 cpu_util=$((100*( cpu_active_cur-cpu_active_prev ) / (cpu_total_cur-cpu_total_prev) ))
-ram_util=$(free | grep Mem | awk '{print $3/$2 * 100}')
+ram_util=$(free | grep Mem | awk '{print $3/$2 * 100}' | cut -c 1-2)
 printf "  %s%%  %s%%" "$cpu_util" "$ram_util"
 
