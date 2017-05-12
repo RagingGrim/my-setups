@@ -1,8 +1,9 @@
 #!/bin/bash
 
+# Install packages
 pacman -Syyu
-pacman -S python cmake python3 rust go cargo npm node vim neovim clang atom chromium octave zsh nc nmap termite
-yaourt -S spotify oh-my-zsh-git
+pacman -S python cmake python3 rust go cargo npm feh node vim neovim clang atom chromium octave zsh nc nmap termite
+yaourt -S spotify oh-my-zsh-git i3gaps-git i3blocks
 pip install neovim
 
 ~/.config/nvim/bundle/YouCompleteMe/install.py
