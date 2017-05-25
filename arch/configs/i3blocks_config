@@ -44,7 +44,7 @@ color=#7587a6
 
 [time]
 command=~/Github/my-setups/arch/scripts/time.sh
-interval=1
+interval=30
 color=#9b859d
 
 
