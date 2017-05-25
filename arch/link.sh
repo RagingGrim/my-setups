@@ -17,4 +17,4 @@ ln -f configs/i3_config ~/.config/i3/config
 ln -f configs/i3blocks_config ~/.i3blocks.conf
 
 # zsh dieter customised.
-sudo ln -f configs/dieter_custom.zsh-theme /usr/share/dieter
+sudo ln -f configs/dieter_custom.zsh-theme /usr/share/oh-my-zsh/themes/dieter.zsh-theme
