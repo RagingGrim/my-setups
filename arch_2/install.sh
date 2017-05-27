@@ -1,22 +1,32 @@
-#!/bin/sh
+#!/bin/bash
 if [ $(id -u) != 0 ]; then
      echo "Run me as root."
      exit 1
 fi
 
+# Ensure we have an ip address.
+dhcpcd &> /dev/null
+# Check if we have internet.
+ping www.google.com -c 2 -q &> /dev/null
+if [ $? -ne 0 ]; then
+     echo "We don't have an internet connection!"
+     exit 3
+fi
+
 # Immediately go to the tmp directory so that
 # the setup is as clean as possible.
+dir=$(pwd)
 cd /tmp
 
 # We define a few targets
 
 function programming_install() {
-     pacman -Sy clang rust go cargo npm python jdk8-openjdk jre8-openjdk git
+     pacman -Sy clang rust go cargo npm python jdk8-openjdk jre8-openjdk git python cmake atom
 }
 
 function base_install(){
-     pacman -Sy wget curl netcat termite vim zsh
-     ln -f configs/dieter_custom.zsh-theme /usr/share/oh-my-zsh/themes/dieter.zsh-theme
+     pacman -Sy wget curl netcat termite vim zsh nmap
+     ln -f $dir/configs/dieter_custom.zsh-theme /usr/share/oh-my-zsh/themes/dieter.zsh-theme
 }
 
 function desktop_install(){
@@ -68,3 +78,4 @@ desktop_install
 programming_install
 echo "To link configurations for a particular user"
 echo "switch to that user and run ./link.sh"
+exit 0
