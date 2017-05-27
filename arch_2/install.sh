@@ -72,7 +72,6 @@ function pacman_update(){
 pacman_update
 base_install
 aur_install
-desktop_install
 laptop_install
 desktop_install
 programming_install
