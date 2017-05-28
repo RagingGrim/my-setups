@@ -37,8 +37,17 @@ function desktop_install(){
 }
 
 function aur_install() {
-     # Nice things.
-     yaourt -Sy spotify google-chrome ttf-droid-font discord oh-my-zsh-git
+     # grep pacman.conf to see if archlinuxfr has been added.
+     # if so install yaourt
+     # if not add it and recall the function.
+
+     if grep -f /etc/pacman.conf "[archlinuxfr]"; then
+          pacman -S yaourt
+     else
+          # Is this escaped correctly
+          printf "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch\n" >> /etc/pacman.conf
+          aur_install
+     fi
 }
 
 function laptop_install(){
