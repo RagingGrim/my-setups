@@ -30,7 +30,7 @@ function base_install(){
 }
 
 function desktop_install(){
-     pacman -Sy gnome gnome-extra gnome-initial-setup gdm
+     pacman -Sy gnome gnome-extra gnome-initial-setup gdm networkmanager
      systemctl enable gdm.service
      systemctl disable dhcpcd.service
 }
