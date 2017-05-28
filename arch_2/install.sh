@@ -31,7 +31,6 @@ function base_install(){
 
 function desktop_install(){
      pacman -Sy gnome gnome-extra gnome-initial-setup gdm
-     yaourt -Sy numix-gtk-theme-git numix-icon-theme-pack
      systemctl enable gdm.service
      systemctl disable dhcpcd.service
 }
@@ -41,7 +40,7 @@ function aur_install() {
      # if so install yaourt
      # if not add it and recall the function.
 
-     if grep -f /etc/pacman.conf "[archlinuxfr]"; then
+     if grep -q "[archlinuxfr]" /etc/pacman.conf; then
           pacman -S yaourt
      else
           # Is this escaped correctly
@@ -50,14 +49,6 @@ function aur_install() {
      fi
 }
 
-function laptop_install(){
-     # If we are running on a device which has a battery ; Assume
-     # that it is my laptop and needs the broadcom-wl-dkms module.
-     if lspci | grep -q BCM43142; then
-          echo "I am a laptop!"
-          yaourt -Sy broadcom-wl-dkms
-     fi
-}
 
 function pacman_update(){
      pacman -Syyu
