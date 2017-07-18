@@ -25,7 +25,7 @@ function programming_install() {
 }
 
 function base_install(){
-     pacman -Sy wget curl netcat termite vim zsh nmap
+     pacman -Sy wget curl netcat termite vim zsh nmap openssh
      ln -f $dir/configs/dieter_custom.zsh-theme /usr/share/oh-my-zsh/themes/dieter.zsh-theme
 }
 

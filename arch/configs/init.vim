@@ -17,23 +17,38 @@ endif
 call neobundle#begin(expand('$HOME/.config/nvim/bundle'))  
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" ------------------------------------
-" THIS IS WHERE YOUR PLUGINS WILL COME
-" ------------------------------------
-
+" Nerdtree
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Shougo/deoplete.nvim'
-NeoBundle 'Shougo/neoinclude.vim'
-NeoBundle 'zchee/deoplete-clang'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'tpope/vim-fugitive'
+map <C-n> :NERDTreeToggle<CR>
+
+" Icons
 NeoBundle 'ryanoasis/vim-devicons'
-NeoBundle 'junegunn/fzf'
-NeoBundle 'neomake/neomake'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'artur-shaik/vim-javacomplete2'
+set encoding=utf-8
+
+" Deoplete
+NeoBundle 'Shougo/deoplete.nvim'
+inoremap <expr><C-a> deoplete#smart_close_popup()."\<C-a>"
+
+" Rust
+NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'sebastianmarkow/deoplete-rust'
+let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1 
+
+" ctrlp
+NeoBundle 'kien/ctrlp.vim'
+
+" vim-airline + themes
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'vim-airline/vim-airline'
+let g:airline_theme='base16_twilight'
+let g:guifont='Inconsolata'
+let g:airline_powerline_fonts = 1
+
+" syntastic
+NeoBundle 'vim-syntastic/syntastic'
 
 call neobundle#end()  
 filetype plugin indent on
@@ -43,51 +58,7 @@ filetype plugin indent on
 NeoBundleCheck  
 "End NeoBundle Scripts-------------------------
 
-" Custom Settings-----
-set number
+
+" General Vim Settings
 set relativenumber
-set completeopt-=preview
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-let g:airline_theme='base16'
-let g:colorcolumn=80
-
-set foldmethod=indent
-
-" Custom Keybindings----
-nnoremap <F4> :NERDTreeToggle<CR> 
-
-" Colors----
-let base16colorspace=256
-colorscheme base16-ashes
-
-" Custom Functions
-"" Toggle fold state between closed and opened.
-"" If there is no fold at current line, just moves forward.
-"" If it is present, reverse it's state.
-fun! ToggleFold()
-    if foldlevel('.') == 0
-        normal! l
-    else
-        if foldclosed('.') < 0
-            . foldclose
-        else
-            . foldopen
-        endif
-    endif
-    " Clear status line
-    echo
-endfun
-
-
-
-" Map this function to Space key.
-noremap f :call ToggleFold()<CR>
-
-" Styling
-match ErrorMsg '\%>80v.\+'
-
-" autocmd
-autocmd! BufWritePost * Neomake
+set number
