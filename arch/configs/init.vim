@@ -28,6 +28,8 @@ set encoding=utf-8
 " Deoplete
 NeoBundle 'Shougo/deoplete.nvim'
 inoremap <expr><C-a> deoplete#smart_close_popup()."\<C-a>"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Rust
 NeoBundle 'rust-lang/rust.vim'
@@ -43,12 +45,17 @@ NeoBundle 'kien/ctrlp.vim'
 " vim-airline + themes
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'vim-airline/vim-airline'
-let g:airline_theme='base16_twilight'
+"let g:airline_theme='dark'
 let g:guifont='Inconsolata'
 let g:airline_powerline_fonts = 1
 
 " syntastic
 NeoBundle 'vim-syntastic/syntastic'
+
+
+" base 16
+NeoBundle 'chriskempson/base16-vim'
+let base16colorspace=256
 
 call neobundle#end()  
 filetype plugin indent on
@@ -62,3 +69,4 @@ NeoBundleCheck
 " General Vim Settings
 set relativenumber
 set number
+colorscheme base16-tomorrow-night
